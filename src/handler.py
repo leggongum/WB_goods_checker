@@ -30,6 +30,7 @@ async def get_good_info(call: CallbackQuery):
 @router.callback_query(main.filter(F.action=='stop_notifications'))
 async def stop_notifications(call: CallbackQuery):
     try:
+        user_coroutine_map[call.from_user.id].close()
         del user_coroutine_map[call.from_user.id]
         await call.answer('Вы отписаны')
     except KeyError:
