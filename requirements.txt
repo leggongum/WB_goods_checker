@@ -1,5 +1,6 @@
 aiohttp==3.9.3  
 alembic==1.13.1
+asyncpg==0.29.0
 fastapi==0.110.0
 SQLAlchemy==2.0.28
 pydantic-settings==2.2.1
