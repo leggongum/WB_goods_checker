@@ -14,12 +14,12 @@ router = Router()
 
 @router.message(Command("start"))
 async def get_start(message: Message):
-    await message.answer('hello!')
+    await message.answer('Привет! \nДля получения информации по товару Wildberries, введи его артикул.')
 
 
 @router.message(Command("menu"))
 async def get_menu(message: Message):
-    await message.answer('Hi!', reply_markup=main_menu)
+    await message.answer('Доступные команды:', reply_markup=main_menu)
 
 
 @router.callback_query(main.filter(F.action=='get_good_info'))
