@@ -15,7 +15,7 @@ dp = Dispatcher()
 async def on_startup():
     await bot.set_webhook(url=settings.WEBAPP_URL)
 
-app = FastAPI(title='WB_goods_checker', on_startup=(on_startup))
+app = FastAPI(title='WB_goods_checker', on_startup=[on_startup])
 
 @app.post('/')
 async def webhook(request: Request):
