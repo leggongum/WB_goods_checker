@@ -12,7 +12,7 @@ class Settings(BaseSettings):
 
     @property
     def DB_URL_POSTGRES(self):
-        return f'postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}/{self.DB_NAME}?charset=utf8'
+        return f'postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}/{self.DB_NAME}'
     
     @property
     def DB_URL_SQLite(self):
