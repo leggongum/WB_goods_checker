@@ -6,10 +6,12 @@ from aiogram.types import Message, Update
 from fastapi import FastAPI, Request
 
 from config import settings
+from handler import router
 
 
 bot = Bot(settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
 dp = Dispatcher()
+dp.include_router(router)
 
 
 async def on_startup():
