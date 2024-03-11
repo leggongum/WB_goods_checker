@@ -6,5 +6,11 @@ from aiogram.types import Message, ReplyKeyboardRemove
 router = Router()
 
 @router.message(Command("start"))
-async def cmd_start(message: Message):
+async def get_start(message: Message):
+    await message.answer(message.text)
+
+
+
+@router.message(Command("menu"))
+async def get_menu(message: Message):
     await message.answer(message.text)

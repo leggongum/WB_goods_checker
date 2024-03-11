@@ -12,7 +12,10 @@ bot = Bot(settings.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.
 dp = Dispatcher()
 
 
-app = FastAPI('WB_goods_checker')
+async def on_startup():
+    await bot.set_webhook(url=settings.WEBAPP_URL)
+
+app = FastAPI(title='WB_goods_checker', on_startup=(on_startup))
 
 @app.post('/')
 async def webhook(request: Request):

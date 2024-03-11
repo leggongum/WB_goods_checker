@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     DB_PASS: str | None = None
     DB_NAME: str = 'test'
 
+    WEBAPP_URL: str | None = None
     BOT_TOKEN: str
 
     @property
