@@ -8,4 +8,4 @@ RUN python -m pip install -r requirements.txt
 
 COPY . .
 
-CMD cd src && uvicorn main:app --host 0.0.0.0 --port 10000
+CMD alembic upgrade head && cd src && uvicorn main:app --host 0.0.0.0 --port 10000
