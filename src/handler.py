@@ -32,9 +32,10 @@ async def stop_notifications(call: CallbackQuery):
     try:
         user_coroutine_map[call.from_user.id].close()
         del user_coroutine_map[call.from_user.id]
-        await call.answer('Вы отписаны')
     except KeyError:
         await call.answer('Вы не подписаны на уведомления')
+    else:
+        await call.answer('Вы отписаны')
 
 
 @router.callback_query(main.filter(F.action=='get_db_info'))
@@ -45,6 +46,8 @@ async def get_db_info(call: CallbackQuery):
 
 @router.callback_query(F.data.startswith('sub'))
 async def subscribe(call: CallbackQuery):
+    if user_coroutine_map.get(call.from_user.id, False):
+        user_coroutine_map[call.from_user.id].close()
     coroutine = send_notifications(call.from_user.id, call.data.split(':')[1])
     user_coroutine_map[call.from_user.id] = coroutine
     asyncio.create_task(coroutine)
