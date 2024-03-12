@@ -56,5 +56,5 @@ async def subscribe(call: CallbackQuery):
 
 @router.message()
 async def get_good_info_by_articul(message: Message):
-    await validate_response_and_send_good_info(message.from_user.id, message.text, get_context_sub_menu(message.text))
-    await insert_action(message.from_user.id, int(message.text))
+    if await validate_response_and_send_good_info(message.from_user.id, message.text, get_context_sub_menu(message.text)):
+        await insert_action(message.from_user.id, int(message.text))

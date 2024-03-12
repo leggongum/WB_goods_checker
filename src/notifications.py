@@ -16,6 +16,8 @@ async def validate_response_and_send_good_info(chat_id, articul, markup):
         await bot.send_message(chat_id, f'Товара с артикулом {articul} не существует.')
     else:
         await bot.send_message(chat_id, form_response_text(info), reply_markup=markup)
+        return True
+    return False
 
 
 async def send_notifications(chat_id, articul):
