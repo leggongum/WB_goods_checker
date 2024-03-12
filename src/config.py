@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     
     @property
     def DB_URL_SQLite(self):
-        return f'sqlite+aiosqlite:///./{self.DB_NAME}.db'
+        return f'sqlite+aiosqlite:///{self.DB_NAME}.db'
     
     model_config = SettingsConfigDict(env_file='.env')
 
