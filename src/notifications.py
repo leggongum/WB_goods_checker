@@ -12,10 +12,8 @@ async def validate_response_and_send_good_info(chat_id, articul, markup):
         info = parse_json(await get_good_info_from_wb(int(articul)))
     except ValueError:
         await bot.send_message(chat_id, 'Принимается только артикул в виде числа.')
-        raise ValueError
     except IndexError:
         await bot.send_message(chat_id, f'Товара с артикулом {articul} не существует.')
-        raise IndexError
     else:
         await bot.send_message(chat_id, form_response_text(info), reply_markup=markup)
 
